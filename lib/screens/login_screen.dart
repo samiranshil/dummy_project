@@ -31,12 +31,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (success) {
 
+      if (!mounted) return;
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const PostListScreen()),
       );
 
     } else {
+
+      if (!mounted) return;
 
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Login Failed")));
